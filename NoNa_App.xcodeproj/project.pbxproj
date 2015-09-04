@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		691815781B8EB96900D98209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691815771B8EB96900D98209 /* AppDelegate.swift */; };
 		6918157B1B8EB96900D98209 /* NoNa_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 691815791B8EB96900D98209 /* NoNa_App.xcdatamodeld */; };
-		6918157D1B8EB96900D98209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6918157C1B8EB96900D98209 /* ViewController.swift */; };
+		6918157D1B8EB96900D98209 /* ResisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6918157C1B8EB96900D98209 /* ResisterVC.swift */; };
 		691815801B8EB96900D98209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6918157E1B8EB96900D98209 /* Main.storyboard */; };
 		691815821B8EB96900D98209 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 691815811B8EB96900D98209 /* Images.xcassets */; };
 		691815851B8EB96900D98209 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691815831B8EB96900D98209 /* LaunchScreen.xib */; };
@@ -31,6 +31,10 @@
 		691815B71B8EBA2300D98209 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815B61B8EBA2300D98209 /* SystemConfiguration.framework */; };
 		691815B91B8EBA3000D98209 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815B81B8EBA3000D98209 /* libz.dylib */; };
 		691815BB1B8EBA4600D98209 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815BA1B8EBA4600D98209 /* libsqlite3.dylib */; };
+		69EAFAB41B98FBE500DA6869 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EAFAB31B98FBE500DA6869 /* LoginVC.swift */; };
+		69EAFAB61B98FE2500DA6869 /* MainHomeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EAFAB51B98FE2500DA6869 /* MainHomeTVC.swift */; };
+		69EAFABA1B9A17AD00DA6869 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EAFAB91B9A17AD00DA6869 /* UploadVC.swift */; };
+		69EAFABC1B9A3FE300DA6869 /* MainHomeTVCELL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EAFABB1B9A3FE300DA6869 /* MainHomeTVCELL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +52,7 @@
 		691815761B8EB96900D98209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		691815771B8EB96900D98209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6918157A1B8EB96900D98209 /* NoNa_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoNa_App.xcdatamodel; sourceTree = "<group>"; };
-		6918157C1B8EB96900D98209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6918157C1B8EB96900D98209 /* ResisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterVC.swift; sourceTree = "<group>"; };
 		6918157F1B8EB96900D98209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		691815811B8EB96900D98209 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		691815841B8EB96900D98209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -72,6 +76,10 @@
 		691815B61B8EBA2300D98209 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		691815B81B8EBA3000D98209 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		691815BA1B8EBA4600D98209 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		69EAFAB31B98FBE500DA6869 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		69EAFAB51B98FE2500DA6869 /* MainHomeTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeTVC.swift; sourceTree = "<group>"; };
+		69EAFAB91B9A17AD00DA6869 /* UploadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		69EAFABB1B9A3FE300DA6869 /* MainHomeTVCELL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHomeTVCELL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				691815771B8EB96900D98209 /* AppDelegate.swift */,
-				6918157C1B8EB96900D98209 /* ViewController.swift */,
+				6918157C1B8EB96900D98209 /* ResisterVC.swift */,
+				69EAFAB51B98FE2500DA6869 /* MainHomeTVC.swift */,
+				69EAFABB1B9A3FE300DA6869 /* MainHomeTVCELL.swift */,
+				69EAFAB91B9A17AD00DA6869 /* UploadVC.swift */,
+				69EAFAB31B98FBE500DA6869 /* LoginVC.swift */,
 				6918157E1B8EB96900D98209 /* Main.storyboard */,
 				691815811B8EB96900D98209 /* Images.xcassets */,
 				691815831B8EB96900D98209 /* LaunchScreen.xib */,
@@ -291,8 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6918157D1B8EB96900D98209 /* ViewController.swift in Sources */,
+				69EAFAB61B98FE2500DA6869 /* MainHomeTVC.swift in Sources */,
+				69EAFABA1B9A17AD00DA6869 /* UploadVC.swift in Sources */,
+				6918157D1B8EB96900D98209 /* ResisterVC.swift in Sources */,
 				691815781B8EB96900D98209 /* AppDelegate.swift in Sources */,
+				69EAFABC1B9A3FE300DA6869 /* MainHomeTVCELL.swift in Sources */,
+				69EAFAB41B98FBE500DA6869 /* LoginVC.swift in Sources */,
 				6918157B1B8EB96900D98209 /* NoNa_App.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +513,7 @@
 				691815961B8EB96900D98209 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		691815971B8EB96900D98209 /* Build configuration list for PBXNativeTarget "NoNa_AppTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +522,7 @@
 				691815991B8EB96900D98209 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

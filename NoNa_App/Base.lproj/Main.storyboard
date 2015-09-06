@@ -272,9 +272,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFI-nX-vwm">
-                                <rect key="frame" x="163" y="405" width="112" height="35"/>
+                                <rect key="frame" x="0.0" y="415" width="414" height="153"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.88235294119999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="G7e-nD-ERZ"/>
+                                    <constraint firstAttribute="width" constant="414" id="G7e-nD-ERZ"/>
                                 </constraints>
                                 <state key="normal" title="작성완료">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,13 +290,13 @@
                             <constraint firstItem="wg8-eL-UyE" firstAttribute="centerY" secondItem="peC-hj-Ucj" secondAttribute="centerY" id="Agt-lc-7ue"/>
                             <constraint firstAttribute="trailing" secondItem="WMB-dU-T0J" secondAttribute="trailing" id="KQf-IM-noF"/>
                             <constraint firstItem="wg8-eL-UyE" firstAttribute="top" secondItem="WMB-dU-T0J" secondAttribute="bottom" constant="23" id="L6A-Dy-2fe"/>
-                            <constraint firstItem="L5p-IO-mFl" firstAttribute="top" secondItem="qFI-nX-vwm" secondAttribute="bottom" constant="296" id="M7h-0N-8dx"/>
-                            <constraint firstItem="qFI-nX-vwm" firstAttribute="centerX" secondItem="wg8-eL-UyE" secondAttribute="centerX" id="ZM4-3B-R0S"/>
+                            <constraint firstItem="L5p-IO-mFl" firstAttribute="top" secondItem="qFI-nX-vwm" secondAttribute="bottom" constant="168" id="M7h-0N-8dx"/>
+                            <constraint firstItem="qFI-nX-vwm" firstAttribute="centerX" secondItem="wg8-eL-UyE" secondAttribute="centerX" constant="-12" id="ZM4-3B-R0S"/>
                             <constraint firstItem="WMB-dU-T0J" firstAttribute="leading" secondItem="peC-hj-Ucj" secondAttribute="leading" id="bLO-vC-UDV"/>
                             <constraint firstItem="wg8-eL-UyE" firstAttribute="leading" secondItem="peC-hj-Ucj" secondAttribute="leadingMargin" constant="68" id="bXI-PG-2IB"/>
                             <constraint firstItem="WMB-dU-T0J" firstAttribute="top" secondItem="HEP-yd-a7f" secondAttribute="bottom" constant="75" id="iCC-dB-Ocf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wg8-eL-UyE" secondAttribute="trailing" constant="44" id="miD-KL-PUf"/>
-                            <constraint firstItem="qFI-nX-vwm" firstAttribute="top" secondItem="wg8-eL-UyE" secondAttribute="bottom" constant="22" id="qYT-86-EiC"/>
+                            <constraint firstItem="qFI-nX-vwm" firstAttribute="top" secondItem="wg8-eL-UyE" secondAttribute="bottom" constant="32" id="qYT-86-EiC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kN7-Pb-hKR">

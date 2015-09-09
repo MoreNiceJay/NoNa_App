@@ -40,32 +40,28 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
     }
     
-    /*func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        //image.size = CGRect(origin: CGPoint, size: CGSize(width: 414, height: 191))
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imageViewPreview.image = image
-        self.dismissViewControllerAnimated(true, completion: nil)
-      */
-    func imagePickerViewController(picker: UIImagePickerController!,
-        didFinishPickingMediaWithInfo info: NSDictionary!) {
+    
+        
+
             self.dismissViewControllerAnimated(true, completion: nil)
-            beginImage = CIImage(image: info[UIImagePickerControllerOriginalImage] as! UIImage)
-            self.updateImageView()
-    
-    
+            
     }
     
     
-    func updateImageView() {
-        filter.setValue(beginImage, forKey:kCIInputImageKey)
-        filter.setValue(intensity, forKey:kCIInputIntensityKey)
-        let output = context.createCGImage(filter.outputImage,
-            fromRect: filter.outputImage.extent())
-        let newImage = UIImage(CGImage: output)
-        self.imageViewPreview.image = newImage
+    func scaleImageWith(image : UIImage, and newSize : CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height ))
+        var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     @IBAction func uploadButtonTapped(sender: AnyObject) {
         println("업로드 시작")
+        var size = CGSizeMake(640, 960)
         var imageText = textFieldPreviewTitle.text
         var previewIamge = imageViewPreview.image
         
@@ -76,8 +72,8 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             println("업로드: 유저가 이미지 혹은 텍스트를 넣지않음")
             
         }else {
-            
-            var imageData = UIImagePNGRepresentation(self.imageViewPreview.image)
+            let scaledImage = self.scaleImageWith(previewIamge!, and: CGSizeMake(460, 960))
+            let imageData = UIImagePNGRepresentation(scaledImage)
             var paseImageFile = PFFile(name: "uploaded_image.png", data : imageData)
             
             

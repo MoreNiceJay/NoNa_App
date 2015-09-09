@@ -14,10 +14,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var imageViewPreview: UIImageView!
     @IBOutlet weak var textFieldPreviewTitle: UITextField!
     
-    var beginImage: CIImage!
-    var context: CIContext!
-    var filter: CIFilter!
-    var intensity: Float = 0.5
+   
     
     
     override func viewDidLoad() {
@@ -33,7 +30,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBAction func uploadPhoto(sender: AnyObject) {
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         imagePicker.allowsEditing = false
         self.presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -61,7 +58,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBAction func uploadButtonTapped(sender: AnyObject) {
         println("업로드 시작")
-        var size = CGSizeMake(640, 960)
+        
         var imageText = textFieldPreviewTitle.text
         var previewIamge = imageViewPreview.image
         
@@ -72,7 +69,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             println("업로드: 유저가 이미지 혹은 텍스트를 넣지않음")
             
         }else {
-            let scaledImage = self.scaleImageWith(previewIamge!, and: CGSizeMake(460, 960))
+            let scaledImage = self.scaleImageWith(previewIamge!, and: CGSizeMake(960, 490))
             let imageData = UIImagePNGRepresentation(scaledImage)
             var paseImageFile = PFFile(name: "uploaded_image.png", data : imageData)
             

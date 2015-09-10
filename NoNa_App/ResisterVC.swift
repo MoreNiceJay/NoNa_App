@@ -15,7 +15,28 @@ class ResisterVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
-   
+    
+    func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
+        
+        if text == "\n" {
+            passwordTextField.resignFirstResponder()
+            usernameTextField.resignFirstResponder()
+            emailTextField.resignFirstResponder()
+            return true
+        }else {
+            return false
+            
+        }
+        
+        
+        
+    }
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        passwordTextField.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

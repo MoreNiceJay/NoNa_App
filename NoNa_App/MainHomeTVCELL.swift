@@ -12,6 +12,7 @@ class MainHomeTVCELL: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
+    @IBOutlet weak var labelId: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

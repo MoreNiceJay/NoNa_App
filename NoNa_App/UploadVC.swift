@@ -15,7 +15,23 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var textFieldPreviewTitle: UITextField!
     
    
-    
+    func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
+        
+        if text == "\n" {
+            textFieldPreviewTitle.resignFirstResponder()
+                        return true
+        }else {
+            return false
+            
+        }
+        
+        
+        
+    }
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        textFieldPreviewTitle.resignFirstResponder()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +46,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBAction func uploadPhoto(sender: AnyObject) {
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.allowsEditing = false
         self.presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -40,14 +56,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imageViewPreview.image = image
     
-        
-
-            self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
             
     }
     
-    
-    func scaleImageWith(image : UIImage, and newSize : CGSize) -> UIImage {
+    /* //스케일 조절
+    func scaleImageWith(image : UIImage,  newSize : CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height ))
         var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -55,12 +69,27 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         return newImage
     }
+*/
+    
+    func scaleImageWith(image : UIImage, newSize : CGSize) -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    
+
     
     @IBAction func uploadButtonTapped(sender: AnyObject) {
         println("업로드 시작")
         
         var imageText = textFieldPreviewTitle.text
         var previewIamge = imageViewPreview.image
+        
         
         if imageText.isEmpty || previewIamge == nil {
             
@@ -69,7 +98,12 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             println("업로드: 유저가 이미지 혹은 텍스트를 넣지않음")
             
         }else {
-            let scaledImage = self.scaleImageWith(previewIamge!, and: CGSizeMake(960, 490))
+            //스케일 조절
+           // let scaledImage = self.scaleImageWith(previewIamge!, and CGSizeMake(960, 490))
+            
+            var scaledImage = self.scaleImageWith(previewIamge!, newSize: CGSizeMake(460, 280))
+        
+            
             let imageData = UIImagePNGRepresentation(scaledImage)
             var paseImageFile = PFFile(name: "uploaded_image.png", data : imageData)
             

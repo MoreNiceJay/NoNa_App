@@ -24,6 +24,27 @@ class LoginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
+        
+        if text == "\n" {
+            passwordTextfield.resignFirstResponder()
+            usernameTextField.resignFirstResponder()
+            return true
+        }else {
+            return false
+            
+        }
+        
+        
+    
+}
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        passwordTextfield.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
+    }
+
+    
+    
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         var username = usernameTextField.text

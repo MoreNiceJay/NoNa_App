@@ -15,19 +15,10 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var textFieldPreviewTitle: UITextField!
     
    
-    func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
-        
-        if text == "\n" {
-            textFieldPreviewTitle.resignFirstResponder()
-                        return true
-        }else {
-            return false
-            
-        }
+    
         
         
-        
-    }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         textFieldPreviewTitle.resignFirstResponder()
     }

@@ -99,11 +99,17 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             var paseImageFile = PFFile(name: "uploaded_image.png", data : imageData)
             
             
-            var save = PFObject(className: "Posts")
-            save["imageFile"] = paseImageFile
-            save["imageText"] = imageText
-            save["uploader"] = PFUser.currentUser()
-            save.saveInBackgroundWithBlock({ ( isSucessful: Bool, error : NSError?) -> Void in
+           var post = PFObject(className: "Posts")
+           //var myComment = PFObject(className:"Comment")
+            post["imageFile"] = paseImageFile
+            post["imageText"] = imageText
+            post["uploader"] = PFUser.currentUser()
+            
+            
+            
+            
+            //myComment.saveInBackground()
+            post.saveInBackgroundWithBlock({ ( isSucessful: Bool, error : NSError?) -> Void in
                
                 
                 if error == nil {

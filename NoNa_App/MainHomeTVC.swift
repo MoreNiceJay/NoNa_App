@@ -13,6 +13,8 @@ class MainHomeTVC: UITableViewController {
 
     var imageFiles = [PFFile]()
     var imageText = [String]()
+    var objectArray = [String]()
+    var objectId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +27,45 @@ class MainHomeTVC: UITableViewController {
         
         var query = PFQuery(className: "Posts")
         query.orderByDescending("createdAt")
+       //query.whereKey("objectId", equalTo:"6eRB34YNuo")
         query.findObjectsInBackgroundWithBlock { (posts :[AnyObject]?, error : NSError?) -> Void in
             if error == nil {
                 //에러없는 경우
+                
+                
                 
                 for post in posts! {
                     
                     self.imageText.append(post["imageText"] as! String)
                     self.imageFiles.append(post["imageFile"] as! PFFile)
+               
+                    self.objectArray.append((post.objectId)! as String!)
+                    
+                    println(self.objectArray)
+ 
+                    
+                    
+                    
                     
                     self.tableView.reloadData()
+            /*                        }
+                var query = PFQuery(className:"Posts")
+               
+                query.getObjectInBackgroundWithId("xWMyZEGZ") {
+                    (gameScore: PFObject?, error: NSError?) -> Void in
+                    if error == nil && gameScore != nil {
+                        println(gameScore)
+                    } else {
+                        println(error)
+                    }
                 }
                 
             } else { println(error)
-            }
+            } */
         }
+            }
         
+    }
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,27 +91,47 @@ class MainHomeTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MainHomeTVCELL
 
-        //제목
+       // 제목
         cell.labelTitle.text = imageText[indexPath.row]
        
-        //이미지
+     //   이미지
         imageFiles[indexPath.row].getDataInBackgroundWithBlock { (imageData : NSData?, error : NSError?) -> Void in
             var image = UIImage(data : imageData! )
-       
-            cell.imagePreview.image = image
-            
+           cell.imagePreview.image = image
+        }
+
         //아이디
             
-            
-        }
+           cell.labelId.text = self.objectArray[indexPath.row]
         
+       
         
         
         // Configure the cell...
 
         return cell
     
+   
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "commentPage") {
+            
+            var selectedRowIndex = self.tableView.indexPathForSelectedRow()
+            var destViewController : comment = segue.destinationViewController as! comment
+            destViewController.parentObjectID = objectArray[selectedRowIndex!.row]
+            
+            
+            
+            
+            
+                
+            }
+        
+    
+    }
+    
     
 
     /*

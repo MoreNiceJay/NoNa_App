@@ -18,3 +18,16 @@ struct myParse {
     var myComment = PFObject(className:"Comment")
 }
 
+func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
+    
+    if text == "\n" {
+       // passwordTextField.resignFirstResponder()
+       // usernameTextField.resignFirstResponder()
+       // emailTextField.resignFirstResponder()
+        return true
+    }else {
+        return false
+            }
+        
+}
+

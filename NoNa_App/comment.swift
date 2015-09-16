@@ -30,8 +30,9 @@ class comment: UIViewController, UITableViewDelegate {
         queryComment()
         //인터넷이 느린지역 바로 업로드 되지 않는 문제
         //타이머를 넣어 해결 혹은 파스 서버와 대조 해보고 에러 메세지 줘야함
+        //혹은 클릭 하면 어레이가 늘어나는걸 확인해야함
         self.tableViewComment.reloadData()
-       
+        textFieldComment.text = ""
         
     }
     

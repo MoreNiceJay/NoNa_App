@@ -51,16 +51,8 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             
     }
     
-    /* //스케일 조절
-    func scaleImageWith(image : UIImage,  newSize : CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height ))
-        var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-*/
+  
+
     
     func scaleImageWith(image : UIImage, newSize : CGSize) -> UIImage {
         
@@ -100,15 +92,13 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             
             
            var post = PFObject(className: "Posts")
-           //var myComment = PFObject(className:"Comment")
+           
             post["imageFile"] = paseImageFile
             post["imageText"] = imageText
             post["uploader"] = PFUser.currentUser()
+            post["username"] = (PFUser.currentUser()!.username)!
+ 
             
-            
-            
-            
-            //myComment.saveInBackground()
             post.saveInBackgroundWithBlock({ ( isSucessful: Bool, error : NSError?) -> Void in
                
                 

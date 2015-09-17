@@ -15,6 +15,7 @@ class MainHomeTVC: UITableViewController {
     var imageText = [String]()
     var objectArray = [String]()
     var objectId = String()
+    var userId = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,31 +39,15 @@ class MainHomeTVC: UITableViewController {
                     
                     self.imageText.append(post["imageText"] as! String)
                     self.imageFiles.append(post["imageFile"] as! PFFile)
-               
                     self.objectArray.append((post.objectId)! as String!)
-                    
-                    println(self.objectArray)
+                    self.userId.append(post["username"] as! String)
  
                     
                     
                     
                     
                     self.tableView.reloadData()
-            /*                        }
-                var query = PFQuery(className:"Posts")
-               
-                query.getObjectInBackgroundWithId("xWMyZEGZ") {
-                    (gameScore: PFObject?, error: NSError?) -> Void in
-                    if error == nil && gameScore != nil {
-                        println(gameScore)
-                    } else {
-                        println(error)
-                    }
-                }
-                
-            } else { println(error)
-            } */
-        }
+                   }
             }
         
     }
@@ -94,7 +79,7 @@ class MainHomeTVC: UITableViewController {
        // 제목
         cell.labelTitle.text = imageText[indexPath.row]
        
-     //   이미지
+       // 이미지
         imageFiles[indexPath.row].getDataInBackgroundWithBlock { (imageData : NSData?, error : NSError?) -> Void in
             var image = UIImage(data : imageData! )
            cell.imagePreview.image = image
@@ -102,13 +87,9 @@ class MainHomeTVC: UITableViewController {
 
         //아이디
             
-           cell.labelId.text = self.objectArray[indexPath.row]
-        
-       
-        
-        
-        // Configure the cell...
+           cell.labelId.text = "Id: " + self.userId[indexPath.row]
 
+        
         return cell
     
    

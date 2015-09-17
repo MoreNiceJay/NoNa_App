@@ -12,30 +12,43 @@ import Parse
 class comment: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableViewComment: UITableView!
     @IBOutlet weak var textFieldComment: UITextField!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var commentArray = [String]()
     var parentObjectID = String()
     var userIdArray = [String]()
     
     @IBAction func uploadComment(sender: AnyObject) {
+        var numberOfComment : Int = commentArray.count
         
-        let game = PFObject(className:"Game")
-        game["createdBy"] = PFUser.currentUser()
-        game["comment"] = "" + textFieldComment.text
-        game["parent"] = parentObjectID
+        loading.hidden = false
+        loading.startAnimating()
         
-        game.saveInBackground()
-        println("시작 :   \(self.commentArray)")
-        commentArray = []
-        queryComment()
-        //인터넷이 느린지역 바로 업로드 되지 않는 문제
-        //타이머를 넣어 해결 혹은 파스 서버와 대조 해보고 에러 메세지 줘야함
-        //혹은 클릭 하면 어레이가 늘어나는걸 확인해야함
-        self.tableViewComment.reloadData()
-        textFieldComment.text = ""
+        let comment = PFObject(className:"Comment")
+        
+        comment["createdBy"] = PFUser.currentUser()
+        comment["comment"] = "" + textFieldComment.text
+        comment["parent"] = parentObjectID
+        comment["username"] = PFUser.currentUser()?.username
+        
+        comment.saveInBackgroundWithBlock { (success : Bool, error : NSError?) -> Void in
+            if error == nil {
+                
+               self.commentArray = []
+                self.queryComment()
+                self.textFieldComment.text = ""
+                
+            }else { println(error)
+            }
+        }
+        
+        
+        
+        
+        
+
         
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         queryComment()
@@ -43,9 +56,11 @@ class comment: UIViewController, UITableViewDelegate {
          }
     
     func queryComment() {
-       
+        loading.hidden = false
+        loading.startAnimating()
+
         
-        let queryComments = PFQuery(className: "Game")
+        let queryComments = PFQuery(className: "Comment")
         
         queryComments.whereKey("parent", equalTo: "\(parentObjectID)")
         queryComments.orderByAscending("createdAt")
@@ -58,16 +73,17 @@ class comment: UIViewController, UITableViewDelegate {
                 //에러없는 경우
                 for post in comments! {
                     self.commentArray.append(post["comment"] as! String)
-                    // self.userIdArray.append((PFUser.currentUser()) as! String)
-                    // self.userIdArray.append(post["createdBy"] as! String)
-                    
-                    self.tableViewComment.reloadData()
-                    println("시작 :   \(self.commentArray)")
+                    self.userIdArray.append(post["username"] as! String)
+                   
                 }
                 }else{
                 println(error)
             }
+                        self.tableViewComment.reloadData()
+            self.loading.hidden = true
+            self.loading.stopAnimating()
         }
+        
     }
     
     
@@ -82,7 +98,7 @@ class comment: UIViewController, UITableViewDelegate {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! UITableViewCell
        
         cell.textLabel?.text = self.commentArray[indexPath.row]
-       // cell.detailTextLabel!.text = self.userIdArray[indexPath.row]
+        cell.detailTextLabel!.text = "Id:" + self.userIdArray[indexPath.row]
         
         return cell
     }

@@ -14,7 +14,7 @@ class ResisterVC: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var confirmEmailTextField: UITextField!
     
     func dismissKeboard(textField : UITextField, shouldchangeTextInRange range : NSRange, replacementText text : String) -> Bool{
         
@@ -22,6 +22,7 @@ class ResisterVC: UIViewController {
             passwordTextField.resignFirstResponder()
             usernameTextField.resignFirstResponder()
             emailTextField.resignFirstResponder()
+            confirmEmailTextField.resignFirstResponder()
             return true
         }else {
             return false
@@ -31,10 +32,11 @@ class ResisterVC: UIViewController {
         
         
     }
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         passwordTextField.resignFirstResponder()
         usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
+        confirmEmailTextField.resignFirstResponder()
     }
 
     
@@ -52,19 +54,30 @@ class ResisterVC: UIViewController {
     }
 
     @IBAction func resisterButtonTapped(sender: AnyObject) {
-        var username = usernameTextField.text
-        var email = emailTextField.text
-        var password = passwordTextField.text
+        let username = usernameTextField.text
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        let confirmPassword = confirmEmailTextField.text
         
-        
-        if username.isEmpty || email.isEmpty || password.isEmpty {
+        if username!.isEmpty  || email!.isEmpty || password!.isEmpty ||   confirmPassword!.isEmpty {
             
             //유저에게 다시 시도하라고 알리기
-            println("레지스터페이지 : 유저 빈칸 안채움")
+            print("레지스터페이지 : 유저 빈칸 안채움")
+            
+             var alert = UIAlertController(title: "Oh miss something", message: "", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Let's fill it up", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
             
         }else {
+            //패스워드 맞게 쳤는지 확인
+            
+            if password == confirmPassword {
+            
             //가입허락하기
-            var user = PFUser()
+            
+            
+            let user = PFUser()
             
             user.username = username
             user.email = email
@@ -75,7 +88,7 @@ class ResisterVC: UIViewController {
                     
                     //가입시키기
                     
-                    println(isSuccesful)
+                    print(isSuccesful)
                     self.performSegueWithIdentifier("resisterToHome", sender: self)
                     
                     
@@ -83,13 +96,24 @@ class ResisterVC: UIViewController {
                 }else {
                     //에러 경고창 띄우기
                     
-                    println(error)
-                    println("레지스터 : 가입프로세스 에러")
+                    var alert = UIAlertController(title: "Try again", message: "There is network problem", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Try again", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    print(error)
+                    print("레지스터 : 가입프로세스 에러")
                 }
                 
             })
             
-        }
+            }else {
+                //패스워드가 맞지 않음
+                var alert = UIAlertController(title: "Unmatched password", message: "", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                passwordTextField.text = ""
+                confirmEmailTextField.text = ""
+            }}
         
 
         

@@ -38,7 +38,7 @@ class LoginVC: UIViewController {
         
     
 }
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         passwordTextfield.resignFirstResponder()
         usernameTextField.resignFirstResponder()
     }
@@ -47,31 +47,31 @@ class LoginVC: UIViewController {
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
-        var username = usernameTextField.text
-        var password = passwordTextfield.text
+        let username = usernameTextField.text
+        let password = passwordTextfield.text
         
-        if username.isEmpty || password.isEmpty {
+        if ((username!.isEmpty || password!.isEmpty )  == true)  {
             
-            println("로그인 페이지 :빈칸 ")
+            print("로그인 페이지 :빈칸 ")
             
             
             //유저에게 알리기
         }else {
-            PFUser.logInWithUsernameInBackground(username, password : password, block: { (user : PFUser?, error : NSError?) -> Void in
+            PFUser.logInWithUsernameInBackground(username!, password : password!, block: { (user : PFUser?, error : NSError?) -> Void in
                 if error == nil {
                     
                     //로그인성공
                     
-                println(user)
+                print(user)
                     self.performSegueWithIdentifier("loginToHome", sender: self)
                     
                     //유저를 홈으로
                 }else{
             //유저에게 얼럴트
-                    println("로그인페이지 : 로그인 프로세스 실패")
+                    print("로그인페이지 : 로그인 프로세스 실패")
                     
                 }
-            })
+            }) 
         
         
     }

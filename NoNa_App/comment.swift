@@ -19,15 +19,13 @@ class comment: UIViewController, UITableViewDelegate {
     var userIdArray = [String]()
     
     @IBAction func uploadComment(sender: AnyObject) {
-        var numberOfComment : Int = commentArray.count
-        
-        loading.hidden = false
-        loading.startAnimating()
+      
+        activityIndicatorOn()
         
         let comment = PFObject(className:"Comment")
         
         comment["createdBy"] = PFUser.currentUser()
-        comment["comment"] = "" + textFieldComment.text
+        comment["comment"] = "" + textFieldComment.text!
         comment["parent"] = parentObjectID
         comment["username"] = PFUser.currentUser()?.username
         
@@ -38,15 +36,9 @@ class comment: UIViewController, UITableViewDelegate {
                 self.queryComment()
                 self.textFieldComment.text = ""
                 
-            }else { println(error)
+            }else { print(error)
             }
         }
-        
-        
-        
-        
-        
-
         
     }
     override func viewDidLoad() {
@@ -56,9 +48,7 @@ class comment: UIViewController, UITableViewDelegate {
          }
     
     func queryComment() {
-        loading.hidden = false
-        loading.startAnimating()
-
+        activityIndicatorOn()
         
         let queryComments = PFQuery(className: "Comment")
         
@@ -77,25 +67,28 @@ class comment: UIViewController, UITableViewDelegate {
                    
                 }
                 }else{
-                println(error)
+                print(error)
             }
-                        self.tableViewComment.reloadData()
-            self.loading.hidden = true
-            self.loading.stopAnimating()
+            self.tableViewComment.reloadData()
+            self.activityIndicatorOff()
         }
-        
     }
     
+    func activityIndicatorOn() {
+        loading.hidden = false
+        loading.startAnimating()
+    }
+    func activityIndicatorOff() {
+        self.loading.hidden = true
+        self.loading.stopAnimating()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
     return commentArray.count
         
     }
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) 
        
         cell.textLabel?.text = self.commentArray[indexPath.row]
         cell.detailTextLabel!.text = "Id:" + self.userIdArray[indexPath.row]

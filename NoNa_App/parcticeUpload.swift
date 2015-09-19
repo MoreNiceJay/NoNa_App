@@ -16,7 +16,7 @@ class parcticeUpload: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var gameScore = PFObject(className:"GameScore")
+        let gameScore = PFObject(className:"GameScore")
         gameScore["score"] = 1337
         gameScore["playerName"] = "Sean Plott"
         gameScore["cheatMode"] = false
@@ -31,22 +31,22 @@ class parcticeUpload: UIViewController {
         
         
         
-        var query = PFQuery(className:"GameScore")
+        let query = PFQuery(className:"GameScore")
         query.getObjectInBackgroundWithId("uzJlVAlaAC") {
             (gameScore: PFObject?, error: NSError?) -> Void in
             if error == nil && gameScore != nil {
                
                 let objectId = gameScore!.objectId
-                println("여기부터")
+                print("여기부터")
                 
-                println(objectId!)
+                print(objectId!)
                 
-                println("여기까지")
+                print("여기까지")
                 
                 
                 self.labelComment.text = objectId!
             } else {
-                println(error)
+                print(error)
             }
         }
         

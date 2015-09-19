@@ -19,32 +19,20 @@ class MainHomeTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        var query = PFQuery(className: "Posts")
+       
+        let query = PFQuery(className: "Posts")
         query.orderByDescending("createdAt")
-       //query.whereKey("objectId", equalTo:"6eRB34YNuo")
+       
         query.findObjectsInBackgroundWithBlock { (posts :[AnyObject]?, error : NSError?) -> Void in
             if error == nil {
                 //에러없는 경우
-                
-                
-                
+              
                 for post in posts! {
                     
                     self.imageText.append(post["imageText"] as! String)
                     self.imageFiles.append(post["imageFile"] as! PFFile)
                     self.objectArray.append((post.objectId)! as String!)
                     self.userId.append(post["username"] as! String)
- 
-                    
-                    
-                    
                     
                     self.tableView.reloadData()
                    }
@@ -81,17 +69,15 @@ class MainHomeTVC: UITableViewController {
        
        // 이미지
         imageFiles[indexPath.row].getDataInBackgroundWithBlock { (imageData : NSData?, error : NSError?) -> Void in
-            var image = UIImage(data : imageData! )
+            let image = UIImage(data : imageData!)
            cell.imagePreview.image = image
         }
 
         //아이디
-            
-           cell.labelId.text = "Id: " + self.userId[indexPath.row]
+          cell.labelId.text = "Id: " + self.userId[indexPath.row]
 
         
         return cell
-    
    
     }
     
@@ -99,19 +85,12 @@ class MainHomeTVC: UITableViewController {
         
         if (segue.identifier == "commentPage") {
             
-            var selectedRowIndex = self.tableView.indexPathForSelectedRow()
-            var destViewController : comment = segue.destinationViewController as! comment
+            let selectedRowIndex = self.tableView.indexPathForSelectedRow
+            let destViewController : comment = segue.destinationViewController as! comment
             destViewController.parentObjectID = objectArray[selectedRowIndex!.row]
             
-            
-            
-            
-            
-                
             }
-        
-    
-    }
+         }
     
     
 

@@ -31,6 +31,9 @@
 		691815B71B8EBA2300D98209 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815B61B8EBA2300D98209 /* SystemConfiguration.framework */; };
 		691815B91B8EBA3000D98209 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815B81B8EBA3000D98209 /* libz.dylib */; };
 		691815BB1B8EBA4600D98209 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 691815BA1B8EBA4600D98209 /* libsqlite3.dylib */; };
+		697704FE1BAC914600CDA94F /* NewResisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697704FD1BAC914600CDA94F /* NewResisterVC.swift */; settings = {ASSET_TAGS = (); }; };
+		697705001BACDB3F00CDA94F /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697704FF1BACDB3F00CDA94F /* CustomLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		697705021BACDB5800CDA94F /* CustomSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697705011BACDB5800CDA94F /* CustomSignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		699BC4241BA39E4400C3BB15 /* parcticeUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BC4231BA39E4400C3BB15 /* parcticeUpload.swift */; };
 		699BC42B1BA5273000C3BB15 /* comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BC42A1BA5273000C3BB15 /* comment.swift */; };
 		699BC42D1BA52BD900C3BB15 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BC42C1BA52BD900C3BB15 /* CommentData.swift */; };
@@ -79,6 +82,9 @@
 		691815B61B8EBA2300D98209 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		691815B81B8EBA3000D98209 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		691815BA1B8EBA4600D98209 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		697704FD1BAC914600CDA94F /* NewResisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewResisterVC.swift; sourceTree = "<group>"; };
+		697704FF1BACDB3F00CDA94F /* CustomLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
+		697705011BACDB5800CDA94F /* CustomSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSignUpViewController.swift; sourceTree = "<group>"; };
 		699BC4231BA39E4400C3BB15 /* parcticeUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = parcticeUpload.swift; sourceTree = "<group>"; };
 		699BC4251BA4EFC200C3BB15 /* NoNa_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoNa_App-Bridging-Header.h"; sourceTree = "<group>"; };
 		699BC42A1BA5273000C3BB15 /* comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = comment.swift; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 			children = (
 				691815771B8EB96900D98209 /* AppDelegate.swift */,
 				6918157C1B8EB96900D98209 /* ResisterVC.swift */,
+				697704FD1BAC914600CDA94F /* NewResisterVC.swift */,
+				697704FF1BACDB3F00CDA94F /* CustomLoginViewController.swift */,
+				697705011BACDB5800CDA94F /* CustomSignUpViewController.swift */,
 				69EAFAB51B98FE2500DA6869 /* MainHomeTVC.swift */,
 				69EAFABB1B9A3FE300DA6869 /* MainHomeTVCELL.swift */,
 				699BC42A1BA5273000C3BB15 /* comment.swift */,
@@ -258,7 +267,9 @@
 		6918156A1B8EB96900D98209 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = jay;
 				TargetAttributes = {
 					691815711B8EB96900D98209 = {
@@ -317,12 +328,15 @@
 			files = (
 				69EAFAB61B98FE2500DA6869 /* MainHomeTVC.swift in Sources */,
 				69EAFABA1B9A17AD00DA6869 /* UploadVC.swift in Sources */,
+				697704FE1BAC914600CDA94F /* NewResisterVC.swift in Sources */,
+				697705021BACDB5800CDA94F /* CustomSignUpViewController.swift in Sources */,
 				699BC42B1BA5273000C3BB15 /* comment.swift in Sources */,
 				6918157D1B8EB96900D98209 /* ResisterVC.swift in Sources */,
 				691815781B8EB96900D98209 /* AppDelegate.swift in Sources */,
 				69EAFABC1B9A3FE300DA6869 /* MainHomeTVCELL.swift in Sources */,
 				69EAFAB41B98FBE500DA6869 /* LoginVC.swift in Sources */,
 				6918157B1B8EB96900D98209 /* NoNa_App.xcdatamodeld in Sources */,
+				697705001BACDB3F00CDA94F /* CustomLoginViewController.swift in Sources */,
 				699BC4241BA39E4400C3BB15 /* parcticeUpload.swift in Sources */,
 				699BC42D1BA52BD900C3BB15 /* CommentData.swift in Sources */,
 			);
@@ -387,6 +401,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -461,6 +476,7 @@
 				);
 				INFOPLIST_FILE = NoNa_App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jay.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NoNa_App/NoNa_App-Bridging-Header.h";
@@ -482,6 +498,7 @@
 				);
 				INFOPLIST_FILE = NoNa_App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jay.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NoNa_App/NoNa_App-Bridging-Header.h";
@@ -502,6 +519,7 @@
 				);
 				INFOPLIST_FILE = NoNa_AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jay.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoNa_App.app/NoNa_App";
 			};
@@ -517,6 +535,7 @@
 				);
 				INFOPLIST_FILE = NoNa_AppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jay.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoNa_App.app/NoNa_App";
 			};
